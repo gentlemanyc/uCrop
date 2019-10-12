@@ -54,6 +54,11 @@ public class UCrop {
 
     private Intent mCropIntent;
     private Bundle mCropOptionsBundle;
+    private Class<? extends Activity> targetClass=UCropActivity.class;
+
+    public void setTargetClass(Class<? extends Activity> targetClass) {
+        this.targetClass = targetClass;
+    }
 
     /**
      * This method creates new Intent builder and sets both source and destination image URIs.
@@ -184,7 +189,7 @@ public class UCrop {
      * @return Intent for {@link UCropActivity}
      */
     public Intent getIntent(@NonNull Context context) {
-        mCropIntent.setClass(context, UCropActivity.class);
+        mCropIntent.setClass(context, targetClass);
         mCropIntent.putExtras(mCropOptionsBundle);
         return mCropIntent;
     }
